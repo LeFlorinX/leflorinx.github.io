@@ -1,0 +1,77 @@
+/* Public info site for EasyAdvert (GitHub Pages). Same tokens as styles/_tokens.scss. */
+:root {
+  --ink: #0f1b2d;
+  --paper: #f7f4ee;
+  --sand: #e6dccb;
+  --text: #1c2c45;
+  --accent: #c2411f;
+  --sky: #7cc4ff;
+  --band: #0f1b2d;
+  --display: "Fraunces", Georgia, serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eef2f8;
+    --paper: #111a28;
+    --sand: #2a3a52;
+    --text: #d7deea;
+    --accent: #ff8a6b;
+    --band: #0a1220;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--text);
+  font: 16px/1.65 var(--body);
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+header { background: var(--band); color: #fff; }
+header .wrap { padding-block: 48px 36px; display: grid; gap: 12px; }
+
+.brand { font: 700 22px var(--display); color: #fff; text-decoration: none; }
+
+h1 { font: 700 clamp(32px, 7vw, 52px)/1.08 var(--display); margin: 0; text-wrap: balance; }
+header p { margin: 0; color: var(--sky); max-width: 52ch; }
+
+nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.28);
+}
+nav a:hover, nav a:focus-visible { box-shadow: inset 0 0 0 2px var(--sky); outline: none; }
+nav a[aria-current="page"] { background: #ff6b4a; color: #0f1b2d; box-shadow: none; }
+
+main .wrap { padding-block: 32px 64px; }
+
+h2 { font: 700 28px/1.2 var(--display); color: var(--ink); margin: 0 0 6px; }
+h3 { font: 700 17px var(--body); color: var(--ink); margin: 24px 0 4px; }
+.meta { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 16px; }
+p, li { max-width: 68ch; }
+ul { padding-left: 20px; }
+a { color: var(--accent); }
+
+.steps { list-style: none; padding: 0; display: grid; gap: 12px; grid-template-columns: 1fr; counter-reset: s; }
+@media (min-width: 560px) { .steps { grid-template-columns: 1fr 1fr; } }
+.steps li { counter-increment: s; padding: 14px 16px; border: 1px solid var(--sand); border-radius: 12px; }
+.steps li::before { content: counter(s); display: block; font: 700 26px var(--display); color: var(--accent); }
+
+footer .wrap { padding-block: 0 40px; font-size: 14px; opacity: 0.8; }
